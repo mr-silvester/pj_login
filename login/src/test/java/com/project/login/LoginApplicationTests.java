@@ -8,6 +8,12 @@ class LoginApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//given
+		//when
+		//then
+
+		//comment by mr-silvester
+
 	}
 
 }
