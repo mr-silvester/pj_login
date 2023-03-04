@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+  <div class="user">
+    <p th:text="${data} + '님 환영합니다.'" >정보를 불러오지 못했습니다.</p>
+  </div>
+  <div class="user">
+  <button type = "button" onclick = "logout()">로그아웃</button>
+  </div>
+</div> <!-- /container -->
+  <script>
+  function logout()  {
+    alert('로그아웃 성공');
+    //세션종료 및 로그인창으로 이동기능 구현 필요
+  }
+  </script>
+</body>
+</html>
