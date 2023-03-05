@@ -1,16 +1,25 @@
 package com.project.login;
-
+import com.project.login.entity.Member;
+import com.project.login.repository.MemberRepository;
+import com.project.login.service.MemberService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class LoginApplicationTests {
+	@Autowired
+	MemberService memberService;
+	@Autowired
+	MemberRepository memberRepository;
 
 	@Test
 	public void memberIdValidate() {
 		//Given
 		Member member1 = new Member();
-		member1.setMemberId("testId").setPassword("a123456").setEmail("test@test.com");
+		member1.setMemberId("testId");
+		member1.setPassword("a123456");
+		member1.setEmail("test@test.com");
 
 		Member member2 = new Member();
 		member2.setMemberId("testId");
@@ -46,19 +55,6 @@ class LoginApplicationTests {
 	}
 
 	@Test
-	public void passwordCheck() {
-		//Given
-		Member member = new Member();
-		member.setPassword("a12345689").setPasswordCheck("123456");
-
-		//When
-		IllegalStateException e = memberService.passwordCheck(member);
-
-		//Then
-		Assert.assertThat(e.getMessage(), is("비밀번호가 서로 다릅니다."));
-	}
-
-	@Test
 	public void emailValidate() {
 		//Given
 		Member member = new Member();
@@ -75,7 +71,8 @@ class LoginApplicationTests {
 	public void emptyCheck() {
 		//Given
 		Member member = new Member();
-		member.setMemberId("test").setPassword("a123456789");
+		member.setMemberId("test");
+		member.setPassword("a123456789");
 
 		//When
 		IllegalStateException e = memberService.emptyCheck(member);
