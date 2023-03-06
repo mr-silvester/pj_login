@@ -2,11 +2,10 @@ package com.project.login.entity;
 
 
 public class Member {
-    Long id;
+    Long id; //PK
     String memberId;
     String password;
     String email;
-
 
 
     public Long getId() {
