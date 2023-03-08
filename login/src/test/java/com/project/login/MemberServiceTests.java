@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @SpringBootTest
@@ -19,7 +20,7 @@ class MemberServiceTests {
 
 	/*
 	@Test
-	public void memberIdValidate() {
+	public void memberIdValidate() throws Exception {
 		//Given
 		Member member1 = new Member();
 		member1.setMemberId("testId");
@@ -36,11 +37,26 @@ class MemberServiceTests {
 		//Then
 		assertThat(e.getMessage()).isEqualTo("유효하지 않은 아이디입니다.");
 	}
+
+
+	@Test
+	void loginTest() throws Exception {
+		//Given
+		Member member = new Member();
+		member.setMemberId("test");
+		member.setPassword("a123456");
+		memberRepository.save(member);
+
+		//When
+		IllegalStateException e = assertThrows(IllegalStateException.class,
+				() -> memberService.login("test", "1234"));
+
+		//Then
+		assertThat(e.getMessage()).isEqualTo("아이디와 비밀번호를 다시 확인해주세요."); //예외가 발생해야합니다.
+	}
 	 */
 
-	//모든 예외를 illegalStateException으로 통일시켰기 때문에 추후 서로 다른 예외 메시지를 위해 수정이 필요합니다.
-
-	//------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------//
 
 	/*
 	1. ID 중복 확인
