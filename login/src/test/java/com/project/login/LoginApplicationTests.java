@@ -60,13 +60,4 @@ class LoginApplicationTests {
 		Member member
 	}
 
-	//------------------------------------------------------------------------------------------------------------//
-
-	/*
-	MemoryRepository Tests
-	1. save
-	2. findById
-	3. findByMemberId
-	4. findAll
-	 */
 }
