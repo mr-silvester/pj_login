@@ -27,15 +27,13 @@ public class MemoryRepository implements MemberRepository {
     @Override
     public Optional<Member> findByMemberId(String MemberId) {
         return store.values()
-                .stream().
-                filter(member -> member.getMemberId().equals(memberId))
+                .stream()
+                .filter(member -> member.getMemberId().equals(memberId))
                 .findAny();
     }
 
     @Override
-    public List<Member> findAll(String MemberId) {
+    public List<Member> findAll() {
         return new ArrayList<>(store.values());
     }
-
-
 }

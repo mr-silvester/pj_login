@@ -23,7 +23,7 @@ public class JpaRepository implements MemberRepository {
     }
 
     @Override
-    public List<Member> findAll(String MemberId) {
+    public List<Member> findAll() {
         return null;
     }
 }

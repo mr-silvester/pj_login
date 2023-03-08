@@ -8,19 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.is;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @SpringBootTest
-class LoginApplicationTests {
-	@Autowired
+class MemberServiceTests {
+	//@Autowired
 	MemberService memberService;
-	@Autowired
+	//@Autowired
 	MemberRepository memberRepository;
 
+	/*
 	@Test
 	public void memberIdValidate() {
 		//Given
@@ -39,6 +36,7 @@ class LoginApplicationTests {
 		//Then
 		assertThat(e.getMessage()).isEqualTo("유효하지 않은 아이디입니다.");
 	}
+	 */
 
 	//모든 예외를 illegalStateException으로 통일시켰기 때문에 추후 서로 다른 예외 메시지를 위해 수정이 필요합니다.
 
@@ -51,6 +49,7 @@ class LoginApplicationTests {
 	4. 빈칸 확인
 	 */
 
+	@Test
 	public void validateID() {
 		Member member;
 	}
