@@ -11,7 +11,6 @@ public class MemoryRepository implements MemberRepository {
     private Long id; //PK
     private String memberId;
     private String password;
-    private String email;
 
     //@Override
     public Member save(Member member) {
@@ -32,7 +31,6 @@ public class MemoryRepository implements MemberRepository {
 
     //@Override
     public List<Member> findAll(String MemberId) {
-
         return new ArrayList<>(store.values());
     }
 
