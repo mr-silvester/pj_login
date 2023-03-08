@@ -27,7 +27,6 @@ class LoginApplicationTests {
 		Member member1 = new Member();
 		member1.setMemberId("testId");
 		member1.setPassword("a123456");
-		member1.setEmail("test@test.com");
 
 		Member member2 = new Member();
 		member2.setMemberId("testId");
