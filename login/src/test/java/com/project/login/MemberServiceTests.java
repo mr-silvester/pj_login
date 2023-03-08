@@ -1,6 +1,7 @@
 package com.project.login;
 import com.project.login.entity.Member;
 import com.project.login.repository.MemberRepository;
+import com.project.login.repository.MemoryRepository;
 import com.project.login.service.MemberService;
 
 import org.junit.jupiter.api.Test;
@@ -13,29 +14,26 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class MemberServiceTests {
-	//@Autowired
-	MemberService memberService;
-	//@Autowired
-	MemberRepository memberRepository;
-
-	/*
+	MemberService memberService = new MemberService();
+	MemberRepository memberRepository = new MemoryRepository();
+/*
 	@Test
-	public void memberIdValidate() throws Exception {
+	public void validateDuplicateMemberIdTest() throws Exception {
 		//Given
 		Member member1 = new Member();
-		member1.setMemberId("testId");
+		member1.setMemberId("test");
 		member1.setPassword("a123456");
 
 		Member member2 = new Member();
-		member2.setMemberId("testId");
+		member2.setMemberId("test");
 
-		memberService.join(member1);
+		memberRepository.save(member1);
 
 		//When
-		IllegalStateException e = memberService.memberIdValidate(member2);
+		IllegalStateException e = memberService.validateDuplicateMemberId(member2);
 
 		//Then
-		assertThat(e.getMessage()).isEqualTo("유효하지 않은 아이디입니다.");
+		assertThat(e.getMessage()).isEqualTo("이미 사용 중인 아이디입니다.");
 	}
 
 
@@ -52,9 +50,9 @@ class MemberServiceTests {
 				() -> memberService.login("test", "1234"));
 
 		//Then
-		assertThat(e.getMessage()).isEqualTo("아이디와 비밀번호를 다시 확인해주세요."); //예외가 발생해야합니다.
+		assertThat(e.getMessage()).isEqualTo("아이디와 비밀번호를 다시 확인해주세요.");
 	}
-	 */
+*/
 
 //------------------------------------------------------------------------------------------------------------//
 
