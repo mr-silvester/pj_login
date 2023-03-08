@@ -5,7 +5,6 @@ public class Member {
     Long id; //PK
     String memberId;
     String password;
-    String email;
 
 
     public Long getId() {
@@ -30,13 +29,5 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
