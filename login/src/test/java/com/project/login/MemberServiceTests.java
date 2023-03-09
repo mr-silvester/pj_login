@@ -65,16 +65,18 @@ class MemberServiceTests {
 
 	@Test
 	public void validateID() {
-		Member member;
+		Member member1 = new Member();
+		member1.setMemberId("1");
+
+		Member member2 = new Member();
+		member2.setMemberId("1");
+
+		memberService.join(member1);
+
+		IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2)); //예외가 발생해야 한다.
+		//will call "validateDuplicateMemberId()" in join() and throw exception there
+		assertThat(e.getMessage()).isEqualTo("이미 사용 중인 아이디입니다.");
 	}
 
-	//------------------------------------------------------------------------------------------------------------//
 
-    /*
-    MemoryRepository Tests
-    1. save
-    2. findById
-    3. findByMemberId
-    4. findAll
-     */
 }

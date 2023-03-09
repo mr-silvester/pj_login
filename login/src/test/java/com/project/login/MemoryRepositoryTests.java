@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MemoryRepositoryTests {
     MemberRepository memberRepository = new MemoryRepository();
 
+
     @Test
     void saveAndFindByIdTest() {
         //Given
