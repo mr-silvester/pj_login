@@ -37,13 +37,7 @@ public class MemoryRepository implements MemberRepository {
         return new ArrayList<>(store.values());
     }
 
-    //------------------------------------------------------------------------------------------------------------//
-
-    /*
-    MemoryRepository Tests
-    1. save
-    2. findById
-    3. findByMemberId
-    4. findAll
-     */
+    public void clearAll() {
+        store.clear();
+    }
 }

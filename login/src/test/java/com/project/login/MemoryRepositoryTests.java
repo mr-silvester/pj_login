@@ -4,6 +4,7 @@ import com.project.login.entity.Member;
 import com.project.login.repository.MemberRepository;
 import com.project.login.repository.MemoryRepository;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,6 +17,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 class MemoryRepositoryTests {
     MemberRepository memberRepository = new MemoryRepository();
 
+    @AfterEach
+    public void afterEach() {
+        memberRepository.clearStore();
+    }
 
     @Test
     void saveAndFindByIdTest() {
@@ -69,5 +74,20 @@ class MemoryRepositoryTests {
 
         //Then
         assertThat(result.size()).isEqualTo(3);
+    }
+
+    //------------------------------------------------------------------------------------------------------------//
+
+    /*
+    MemoryRepository Tests
+    1. save
+    2. findById
+    3. findByMemberId
+    4. findAll
+     */
+
+    @Test
+    void save() {
+
     }
 }
