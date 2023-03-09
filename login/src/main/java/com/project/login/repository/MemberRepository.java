@@ -10,4 +10,5 @@ public interface MemberRepository {
     public Optional<Member> findById(Long id);
     public Optional<Member> findByMemberId(String MemberId);
     public List<Member> findAll();
+    public void clearStore();
 }

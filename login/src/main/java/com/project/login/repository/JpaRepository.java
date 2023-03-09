@@ -26,4 +26,7 @@ public class JpaRepository implements MemberRepository {
     public List<Member> findAll() {
         return null;
     }
+
+    public void clearStore() {
+    }
 }
