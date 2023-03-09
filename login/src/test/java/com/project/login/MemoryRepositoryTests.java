@@ -86,8 +86,43 @@ class MemoryRepositoryTests {
     4. findAll
      */
 
+    //tests both save() and findById()
     @Test
-    void save() {
+    void save2() {
+        Member member = new Member();
+        member.setMemberId("id1");
 
+        memberRepository.save(member);
+
+        Member result = memberRepository.findById(member.getId()).get();
+        assertThat(result).isEqualTo(member);
+    }
+
+    @Test
+    void findByMemberId2() {
+        Member member1 = new Member();
+        member1.setMemberId("id1");
+        memberRepository.save(member1);
+
+        Member member2 = new Member();
+        member2.setMemberId("id2");
+        memberRepository.save(member2);
+
+        Member result = memberRepository.findByMemberId("id2").get();
+        assertThat(result).isEqualTo(member2);
+    }
+
+    @Test
+    void findAll2() {
+        Member member1 = new Member();
+        member1.setMemberId("id1");
+        memberRepository.save(member1);
+
+        Member member2 = new Member();
+        member2.setMemberId("id2");
+        memberRepository.save(member2);
+
+        List<Member> result = memberRepository.findAll();
+        assertThat(result.size()).isEqualTo(2);
     }
 }
