@@ -14,9 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 class MemberServiceTests {
-	MemberService memberService = new MemberService();
+	@Autowired
 	MemberRepository memberRepository = new MemoryRepository();
-/*
+	@Autowired
+	MemberService memberService = new MemberService(memberRepository);
+
 	@Test
 	public void validateDuplicateMemberIdTest() throws Exception {
 		//Given
@@ -30,7 +32,8 @@ class MemberServiceTests {
 		memberRepository.save(member1);
 
 		//When
-		IllegalStateException e = memberService.validateDuplicateMemberId(member2);
+		IllegalStateException e = assertThrows(IllegalStateException.class,
+				() -> memberService.join(member2));
 
 		//Then
 		assertThat(e.getMessage()).isEqualTo("이미 사용 중인 아이디입니다.");
@@ -50,9 +53,9 @@ class MemberServiceTests {
 				() -> memberService.login("test", "1234"));
 
 		//Then
-		assertThat(e.getMessage()).isEqualTo("아이디와 비밀번호를 다시 확인해주세요.");
+		assertThat(e.getMessage()).isEqualTo("아이디와 비밀번호가 일치하지 않습니다.");
+		//assertThat(e.getMessage()).isEqualTo("존재하지 않는 아이디입니다.");
 	}
-*/
 
 //------------------------------------------------------------------------------------------------------------//
 
