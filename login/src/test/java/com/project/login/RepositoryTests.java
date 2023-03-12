@@ -6,16 +6,19 @@ import com.project.login.repository.MemoryRepository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
 import java.util.List;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class MemoryRepositoryTests {
-    MemberRepository memberRepository = new MemoryRepository();
+class RepositoryTests {
+    @Autowired
+    MemberRepository memberRepository;
 
     @AfterEach
     public void afterEach() {
@@ -52,6 +55,30 @@ class MemoryRepositoryTests {
 
         //Then
         assertThat(result).isEqualTo("test1");
+    }
+
+    @Test
+    void findByCreatedDateTest() {
+        //Given
+        Member member1 = new Member();
+        Date date1 = new Date();
+        member1.setCreatedDate(date1);
+        memberRepository.save(member1);
+
+        Member member2 = new Member();
+        Date date2 = new Date();
+        member2.setCreatedDate(date2);
+        memberRepository.save(member2);
+
+        Member member3 = new Member();
+        member2.setCreatedDate(date2);
+        memberRepository.save(member3);
+
+        //When
+        List<Member> result = memberRepository.findByCreatedDate(date2);
+
+        //Then
+        assertThat(result).isEqualTo(2);
     }
 
     @Test

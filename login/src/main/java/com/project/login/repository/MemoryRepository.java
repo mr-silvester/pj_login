@@ -1,8 +1,10 @@
 package com.project.login.repository;
 
 import com.project.login.entity.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MemoryRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();
@@ -32,6 +34,13 @@ public class MemoryRepository implements MemberRepository {
                 .findAny();
     }
 
+    @Override
+    public List<Member> findByCreatedDate(Date createdDate) {
+        return new ArrayList<>(store.values()
+                .stream()
+                .filter(member -> member.getCreatedDate().equals(createdDate))
+                .collect(Collectors.toList()));
+    };
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());

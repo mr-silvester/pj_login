@@ -7,17 +7,17 @@ import com.project.login.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @SpringBootTest
+@Transactional
 class MemberServiceTests {
-	@Autowired
-	MemberRepository memberRepository = new MemoryRepository();
-	@Autowired
-	MemberService memberService = new MemberService(memberRepository);
+	@Autowired MemberRepository memberRepository;
+	@Autowired MemberService memberService;
 
 	@Test
 	public void validateDuplicateMemberIdTest() throws Exception {

@@ -2,9 +2,10 @@ package com.project.login.service;
 
 import com.project.login.entity.Member;
 import com.project.login.repository.MemberRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-
+@Transactional
 public class MemberService {
     private MemberRepository memberRepository;
     public MemberService (MemberRepository memberRepository) {

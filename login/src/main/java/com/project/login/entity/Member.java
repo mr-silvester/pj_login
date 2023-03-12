@@ -1,12 +1,17 @@
 package com.project.login.entity;
 
+import javax.persistence.*;
 
+import java.util.Date;
+
+@Entity
 public class Member {
-    Long id; //PK
-    String memberId;
-    String password;
-
-
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; //PK
+    private String memberId;
+    private String password;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
     public Long getId() {
         return id;
     }
@@ -29,5 +34,13 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 }
