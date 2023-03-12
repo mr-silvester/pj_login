@@ -2,12 +2,12 @@ package com.project.login;
 
 import com.project.login.entity.Member;
 import com.project.login.repository.MemberRepository;
-import com.project.login.repository.MemoryRepository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Transactional
 class RepositoryTests {
     @Autowired
     MemberRepository memberRepository;
@@ -61,24 +62,22 @@ class RepositoryTests {
     void findByCreatedDateTest() {
         //Given
         Member member1 = new Member();
-        Date date1 = new Date();
-        member1.setCreatedDate(date1);
+        member1.setCreatedDate(new Date(2023, 03, 12));
         memberRepository.save(member1);
 
         Member member2 = new Member();
-        Date date2 = new Date();
-        member2.setCreatedDate(date2);
+        member2.setCreatedDate(new Date(2023, 12, 31));
         memberRepository.save(member2);
 
         Member member3 = new Member();
-        member2.setCreatedDate(date2);
+        member3.setCreatedDate(new Date(2023, 12, 31));
         memberRepository.save(member3);
 
         //When
-        List<Member> result = memberRepository.findByCreatedDate(date2);
+        List<Member> result = memberRepository.findByCreatedDate(new Date(2023, 12, 31));
 
         //Then
-        assertThat(result).isEqualTo(2);
+        assertThat(result.size()).isEqualTo(2);
     }
 
     @Test

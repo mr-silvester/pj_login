@@ -13,7 +13,6 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-
     private final DataSource dataSource;
     private final EntityManager entityManager;
 
