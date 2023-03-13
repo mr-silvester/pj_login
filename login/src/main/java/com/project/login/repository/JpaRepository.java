@@ -29,11 +29,11 @@ public class JpaRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findByMemberId(String memberId) {
-        Member member = entityManager
+        List<Member> result = entityManager
                 .createQuery("SELECT m FROM Member m WHERE m.memberId=:memberId", Member.class)
                 .setParameter("memberId", memberId)
-                .getSingleResult();
-        return Optional.ofNullable(member);
+                .getResultList();
+        return result.stream().findAny();
     }
 
     @Override
