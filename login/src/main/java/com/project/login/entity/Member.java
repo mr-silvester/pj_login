@@ -43,4 +43,8 @@ public class Member {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+
+    public String toString() {
+        return "([" + id + ", " + createdDate + ", " + memberId + ", " + password +")";
+    }
 }

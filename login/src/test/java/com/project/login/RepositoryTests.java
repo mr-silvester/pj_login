@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Transactional
 class RepositoryTests {
     @Autowired
     MemberRepository memberRepository;
@@ -71,14 +73,14 @@ class RepositoryTests {
         memberRepository.save(member2);
 
         Member member3 = new Member();
-        member2.setCreatedDate(date2);
+        member3.setCreatedDate(date2);
         memberRepository.save(member3);
 
         //When
         List<Member> result = memberRepository.findByCreatedDate(date2);
 
         //Then
-        assertThat(result).isEqualTo(2);
+        assertThat(result.size()).isEqualTo(2);
     }
 
     @Test

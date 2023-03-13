@@ -1,5 +1,6 @@
 package com.project.login;
 
+import com.project.login.entity.Member;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

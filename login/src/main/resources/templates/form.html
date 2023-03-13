@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div class="container">
-  <form method="post">
+  <form action="new" method="post">
     <div class="form-example">
       <label for="userId">아이디</label>
-      <input type="text" id="userId" placeholder="">
+      <input type="text" id="userId" name="userId" placeholder="">
       <text id="validateId">#아이디 유효성 검사</text>
     </div>
     <div class="form-example">
       <label for="password">비밀번호</label>
-      <input type="password" id="password" placeholder="">
+      <input type="password" id="password" name="password" placeholder="">
       <text id="validatePassword">#비밀번호 유효성 검사</text>
     </div>
     <div class="form-example">
@@ -18,17 +18,17 @@
       <input type="password" id="passwordCheck" placeholder="">
       <text id="validateRepassword">#비밀번호 확인 유효성 검사</text>
     </div>
-    <div class="form-example">
-      <label for="userEmail">이메일</label>
-      <input type="email" id="userEmail" placeholder="">
-    </div>
-    <div class="form-example">
-      <button type="button" onclick = "passwordChecking()">회원가입</button>
-    </div>
+    <button type="submit" onclick = "passwordChecking()">회원가입</button>
   </form>
 </div> <!-- /container -->
-  <script>
 
+<!--
+  1. form action
+  2. button type="submit"
+  3. name field랑 match
+-->
+
+<script>
 
     function blankCheck() {
 
@@ -41,6 +41,6 @@
         return false;
       }
     }
-  </script>
+</script>
 </body>
 </html>
