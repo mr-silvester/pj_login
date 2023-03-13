@@ -18,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class MemberServiceTests {
 	@Autowired MemberRepository memberRepository;
 	@Autowired MemberService memberService;
-
 	@Test
 	public void validateDuplicateMemberIdTest() throws Exception {
 		//Given

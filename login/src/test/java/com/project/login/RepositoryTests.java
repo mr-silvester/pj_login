@@ -2,7 +2,6 @@ package com.project.login;
 
 import com.project.login.entity.Member;
 import com.project.login.repository.MemberRepository;
-import com.project.login.repository.MemoryRepository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -63,21 +62,23 @@ class RepositoryTests {
     void findByCreatedDateTest() {
         //Given
         Member member1 = new Member();
-        Date date1 = new Date();
-        member1.setCreatedDate(date1);
+        member1.setCreatedDate(new Date(2023, 03, 12));
         memberRepository.save(member1);
 
         Member member2 = new Member();
-        Date date2 = new Date();
-        member2.setCreatedDate(date2);
+        member2.setCreatedDate(new Date(2023, 12, 31));
         memberRepository.save(member2);
 
         Member member3 = new Member();
+<<<<<<< HEAD
         member3.setCreatedDate(date2);
+=======
+        member3.setCreatedDate(new Date(2023, 12, 31));
+>>>>>>> origin/23.03.12
         memberRepository.save(member3);
 
         //When
-        List<Member> result = memberRepository.findByCreatedDate(date2);
+        List<Member> result = memberRepository.findByCreatedDate(new Date(2023, 12, 31));
 
         //Then
         assertThat(result.size()).isEqualTo(2);

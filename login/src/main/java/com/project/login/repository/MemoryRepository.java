@@ -1,7 +1,6 @@
 package com.project.login.repository;
 
 import com.project.login.entity.Member;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,10 +35,11 @@ public class MemoryRepository implements MemberRepository {
 
     @Override
     public List<Member> findByCreatedDate(Date createdDate) {
-        return new ArrayList<>(store.values()
+        List<Member> result = store.values()
                 .stream()
                 .filter(member -> member.getCreatedDate().equals(createdDate))
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
+        return result;
     };
     @Override
     public List<Member> findAll() {

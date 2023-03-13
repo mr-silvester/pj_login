@@ -1,12 +1,12 @@
 package com.project.login.repository;
 
 import com.project.login.entity.Member;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 
 public class JpaRepository implements MemberRepository {
     private final EntityManager entityManager;
