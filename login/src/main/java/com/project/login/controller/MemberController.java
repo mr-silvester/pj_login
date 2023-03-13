@@ -7,11 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class MemberController {
     //member 정보 (id & pw) 전달 받아서 Member object에 저장하고 call memberService.join(member) method
 
     private final MemberService memberService;
+
+    @Autowired
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     @PostMapping("login")
     public String memberLogin(MemberDTO memberDTO) {
@@ -27,11 +34,6 @@ public class MemberController {
             return "redirect:/";
         }
         return "welcome";
-    }
-
-    @Autowired
-    public MemberController(MemberService memberService) {
-        this.memberService = memberService;
     }
 
     @GetMapping("new")

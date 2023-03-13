@@ -26,6 +26,10 @@ public class MemberService {
         );
     }
 
+    public Member findMemberById(Long id) {
+        Optional<Member> member = memberRepository.findById(id);
+        return member.get();
+    }
     public Long login(String memberId, String password) {
         Optional<Member> member = memberRepository.findByMemberId(memberId);
         member.ifPresentOrElse(m -> {
