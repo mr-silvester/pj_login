@@ -1,9 +1,13 @@
 package com.project.login.entity;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 
 import java.util.Date;
 
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +15,7 @@ public class Member {
     private String memberId;
     private String password;
     @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
     private Date createdDate;
     public Long getId() {
         return id;
