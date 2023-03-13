@@ -13,11 +13,21 @@ public class MemberController {
 
     private final MemberService memberService;
 
-//    @PostMapping("login")
-//    public String create(MemberForm form) {
-//
-//        return "welcome";
-//    }
+    @PostMapping("login")
+    public String memberLogin(MemberDTO memberDTO) {
+        Member member = new Member();
+
+        String memberId = memberDTO.getUserId();
+        String password = memberDTO.getPassword();
+
+        try {
+            memberService.login(memberId, password);
+        } catch (IllegalStateException e) {
+            System.out.println("login failed");
+            return "redirect:/";
+        }
+        return "welcome";
+    }
 
     @Autowired
     public MemberController(MemberService memberService) {
@@ -35,9 +45,13 @@ public class MemberController {
         member.setMemberId(memberDTO.getUserId());
         member.setPassword(memberDTO.getPassword());
 
-        System.out.println(member);
+        //System.out.println(member);
 
-        memberService.join(member);
+        try {
+            memberService.join(member);
+        } catch (IllegalStateException e) {
+            System.out.println("duplicate member id");
+        }
         return "redirect:/";
     }
 }
