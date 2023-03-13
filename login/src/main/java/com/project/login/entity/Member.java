@@ -45,6 +45,6 @@ public class Member {
     }
 
     public String toString() {
-        return "([" + id + ", " + createdDate + ", " + memberId + ", " + password +")";
+        return "(" + id + ", " + createdDate + ", " + memberId + ", " + password +")";
     }
 }

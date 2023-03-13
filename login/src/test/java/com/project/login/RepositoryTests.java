@@ -70,11 +70,7 @@ class RepositoryTests {
         memberRepository.save(member2);
 
         Member member3 = new Member();
-<<<<<<< HEAD
-        member3.setCreatedDate(date2);
-=======
         member3.setCreatedDate(new Date(2023, 12, 31));
->>>>>>> origin/23.03.12
         memberRepository.save(member3);
 
         //When
